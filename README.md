@@ -1,4 +1,7 @@
 # TrashUp
+<p align="center">
+  <img src="https://github.com/nathanellodar/TrashUp/bangkit_banner.png">
+</p>
 
 ## Project Documents:
 - Project Brief : 
