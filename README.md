@@ -8,6 +8,7 @@
 - Project Brief : 
 - Final presentation : 
 - Go-To Market presentation :
+- Video Youtube :
 
 ## Repositories
 
