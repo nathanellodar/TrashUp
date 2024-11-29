@@ -5,10 +5,10 @@
 </p>
 
 ## Project Documents:
-- Project Brief : 
-- Final presentation : 
-- Go-To Market presentation :
-- Video Youtube :
+- Project Brief : [Project Brief](https://)
+- Final presentation :  [Final presentation](https://)
+- Go-To Market presentation : [Go-To Market](https://)
+- Video Youtube :[Youtube](https://)
 
 ## Repositories
 
