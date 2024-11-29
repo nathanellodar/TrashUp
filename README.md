@@ -14,11 +14,14 @@
 
 |   Learning Paths   |                                Link                                |
 | :----------------: | :----------------------------------------------------------------: |
-| Mobile Development | [Github](https://github.com/nathanellodar/TrashUp/tree/main/android) |
-|  Cloud Computing  | [Github](https://github.com/nathanellodar/TrashUp/tree/main/gcloud)  |
-|   Machine Learning  | [Github](https://github.com/nathanellodar/TrashUp/tree/main/ML)  |
+| Mobile Development | [MD](https://github.com/nathanellodar/TrashUp/tree/main/android) |
+|  Cloud Computing  | [CC](https://github.com/nathanellodar/TrashUp/tree/main/gcloud)  |
+|   Machine Learning  | [ML](https://github.com/nathanellodar/TrashUp/tree/main/ML)  |
 
 ## Capstone Project Team
+Bangkit Capstone Team ID : C242-PS072  <br>
+Here is our repository for Bangkit 2024 Capstone project. Our team consist of 3 Machine Learning, 2 Mobile Development, and 2 Cloud Computing.
+
 | Name                         | Bangkit-ID   | Github-Profile                        | Email                           | Learning Path         |
 |------------------------------|--------------|---------------------------------------|---------------------------------|-----------------------|
 | Ahmad Haitsam                | A183B4KY0209 | [Github](https://github.com/haitsama-37) | A183B4KY0209@bangkit.academy	      | Mobile Development   |
