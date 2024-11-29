@@ -1,5 +1,10 @@
 # TrashUp
 
+## Project Documents:
+- Project Brief : 
+- Final presentation : 
+- Go-To Market presentation : 
+
 ## Capstone Project Team: 
 | Name | Bangkit-ID | Github-Profile |
 | ------ | ------ | ------ | 
