@@ -7,7 +7,15 @@
 ## Project Documents:
 - Project Brief : 
 - Final presentation : 
-- Go-To Market presentation : 
+- Go-To Market presentation :
+
+## Repositories
+
+|   Learning Paths   |                                Link                                |
+| :----------------: | :----------------------------------------------------------------: |
+| Mobile Development | [Github](https://github.com/nathanellodar/TrashUp/tree/main/android) |
+|  Cloud Computing  | [Github](https://github.com/nathanellodar/TrashUp/tree/main/gcloud)  |
+|   Machine Learning  | [Github](https://github.com/nathanellodar/TrashUp/tree/main/ML)  |
 
 ## Capstone Project Team: 
 | Name | Bangkit-ID | Github-Profile |
