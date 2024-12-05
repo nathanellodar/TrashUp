@@ -1,4 +1,4 @@
-package com.example.storyappdicoding.data.remote.response
+package com.bangkit.trashup.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -16,8 +16,8 @@ data class LoginResponse(
 
 data class LoginResult(
 
-    @field:SerializedName("userId")
-    val userId: String? = null,
+	@field:SerializedName("userId")
+	val userId: Int? = null,
 
     @field:SerializedName("name")
     val name: String? = null,

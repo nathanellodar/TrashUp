@@ -1,43 +1,78 @@
 package com.bangkit.trashup.data.remote.response
 
 import android.os.Parcelable
+import com.bangkit.trashup.data.local.entity.ArticlesFavEntity
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ArticlesResponse(
 
-    @field:SerializedName("listStory")
-    val listStory: List<ListStoryItem?>? = null,
+    @field:SerializedName("payload")
+    val payload: Payload? = null
+): Parcelable
 
-    @field:SerializedName("error")
-    val error: Boolean? = null,
+@Parcelize
+data class DatasItem(
+
+    @field:SerializedName("pitcURL")
+    val pitcURL: String? = null,
+
+    @field:SerializedName("totalView")
+    val totalView: Int? = null,
+
+    @field:SerializedName("wasteType")
+    val wasteType: String? = null,
+
+    @field:SerializedName("wasteGroup")
+    val wasteGroup: String? = null,
+
+    @field:SerializedName("id")
+    val id: Int? = null,
+
+    @field:SerializedName("title")
+    val title: String? = null,
+
+    @field:SerializedName("tools")
+    val tools: String? = null,
+
+    @field:SerializedName("steps")
+    val steps: String? = null,
+
+    @field:SerializedName("desc")
+    val desc: String? = null
+): Parcelable {
+
+    fun toArticlesFavEntity(): ArticlesFavEntity? {
+        return if (id != null && title != null && pitcURL != null && wasteType != null && wasteGroup != null &&
+            tools != null && steps != null && desc != null && totalView != null
+        ) {
+            ArticlesFavEntity(
+                id = id,
+                title = title,
+                pitcURL = pitcURL,
+                wasteType = wasteType,
+                wasteGroup = wasteGroup,
+                tools = tools,
+                steps = steps,
+                desc = desc,
+                totalView = totalView
+            )
+        } else {
+            null
+        }
+    }
+}
+
+@Parcelize
+data class Payload(
+
+    @field:SerializedName("status_code")
+    val statusCode: Int? = null,
+
+    @field:SerializedName("datas")
+    val datas: List<DatasItem?>? = null,
 
     @field:SerializedName("message")
     val message: String? = null
-):Parcelable
-
-@Parcelize
-data class ListStoryItem(
-
-    @field:SerializedName("photoUrl")
-    val photoUrl: String? = null,
-
-    @field:SerializedName("createdAt")
-    val createdAt: String? = null,
-
-    @field:SerializedName("name")
-    val name: String? = null,
-
-    @field:SerializedName("description")
-    var description: String? = null,
-
-    @field:SerializedName("lon")
-    val lon: Double? = null,
-
-    @field:SerializedName("id")
-    val id: String? = null,
-
-    @field:SerializedName("lat")
-    val lat: Double? = null
-):Parcelable
+): Parcelable

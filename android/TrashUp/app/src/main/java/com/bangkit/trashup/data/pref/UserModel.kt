@@ -1,7 +1,7 @@
 package com.bangkit.trashup.data.pref
 
 data class UserModel(
-    val userId: String,
+    val userId: Int,
     val name: String,
     val token: String
 )

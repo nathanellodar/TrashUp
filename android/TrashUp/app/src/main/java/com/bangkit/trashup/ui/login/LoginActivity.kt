@@ -12,9 +12,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.trashup.MainActivity
+import com.bangkit.trashup.R
 import com.bangkit.trashup.data.Result
 import com.bangkit.trashup.databinding.ActivityLoginBinding
 import com.bangkit.trashup.ui.ViewModelFactory
+import com.bangkit.trashup.ui.register.RegisterActivity  // Import RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
 
         setupView()
         setupLogin()
+        setupSignUpLink()  // Call method to setup sign-up link
         playAnimation()
     }
 
@@ -86,6 +89,14 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun setupSignUpLink() {
+        // Set up listener for the SignUp link click
+        binding.signupTextView.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 
