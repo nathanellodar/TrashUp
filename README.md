@@ -1,7 +1,7 @@
 # TrashUp Application
 
 <p align="center">
-  <img src="https://github.com/nathanellodar/TrashUp/blob/main/bangkit_banner.png">
+  <img src="https://github.com/nathanellodar/TrashUp/blob/main/maskot.png">
 </p>
 
 ## Project Documents:
