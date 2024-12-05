@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.trashup.di.Injection
 import com.bangkit.trashup.ui.articles.ArticlesViewModel
+import com.bangkit.trashup.ui.favorite.FavoriteViewModel
 import com.bangkit.trashup.ui.login.LoginViewModel
 import com.bangkit.trashup.ui.register.RegisterViewModel
 import com.bangkit.trashup.ui.home.HomeViewModel
@@ -33,6 +34,10 @@ class ViewModelFactory(private val userRepository: UserRepository) :
 
             modelClass.isAssignableFrom(ArticlesViewModel::class.java) -> {
                 ArticlesViewModel(userRepository) as T
+            }
+
+            modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
+                FavoriteViewModel(userRepository) as T
             }
 
             else -> {

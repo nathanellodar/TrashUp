@@ -24,24 +24,33 @@ class ApiConfig {
                     userPreference.getSession().firstOrNull()?.token.orEmpty()
                 }
 
+                val requestBuilder = chain.request().newBuilder()
+
                 if (token.isNotEmpty()) {
-                    val request = chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer $token")
-                        .build()
-                    Log.d("Auth Header", request.headers["Authorization"].toString())
-                    chain.proceed(request)
-                } else {
-                    chain.proceed(chain.request())
+                    requestBuilder.addHeader("Authorization", "Bearer $token")
                 }
+
+                val request = requestBuilder.build()
+                Log.d("Auth Header", request.headers["Authorization"].toString())
+                chain.proceed(request)
+            }
+
+            val apiKeyInterceptor = Interceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("api-key", "CAPSTONE-TRASHUP-API-KEY-12345678")
+                    .build()
+                Log.d("API Key Header", request.headers["api-key"].toString())
+                chain.proceed(request)
             }
 
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .addInterceptor(authInterceptor)
+                .addInterceptor(apiKeyInterceptor)
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://story-api.dicoding.dev/v1/")
+                .baseUrl("https://backend-fix-dot-capstone-441912.de.r.appspot.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

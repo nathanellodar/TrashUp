@@ -29,9 +29,9 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            android:text="@string/result" />
+            android:textSize="16sp"
+            android:justificationMode="inter_word"
+            android:text="@string/result"
+            tools:ignore="UnusedAttribute" />
     </LinearLayout>
 </ScrollView>

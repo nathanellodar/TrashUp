@@ -1,4 +1,4 @@
-package com.example.storyappdicoding.data.remote.response
+package com.bangkit.trashup.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 

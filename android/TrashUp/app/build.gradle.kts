@@ -1,12 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
     id("kotlin-parcelize")
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 android {
     namespace = "com.bangkit.trashup"
     compileSdk = 35
+
+    packagingOptions {
+        merge("META-INF/DEPENDENCIES")
+    }
 
     defaultConfig {
         applicationId = "com.bangkit.trashup"
@@ -37,6 +43,14 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        mlModelBinding = true
+    }
+    allprojects {
+        repositories {
+            google()
+            mavenCentral()
+            maven { url = uri("https://jitpack.io") }
+        }
     }
 }
 
@@ -60,8 +74,30 @@ dependencies {
     implementation(libs.androidx.activity)
 
     implementation(libs.androidx.exifinterface)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.play.services.maps)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.room.compiler)
+
+    implementation("com.google.android.gms:play-services-location:21.2.0")
+
+    implementation("androidx.paging:paging-runtime-ktx:3.1.0")
+
+    implementation ("org.tensorflow:tensorflow-lite:2.12.0")
+    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
+    implementation("com.github.yalantis:ucrop:2.2.8")
+
+    implementation ("com.google.auth:google-auth-library-oauth2-http:1.18.0")
+    implementation("com.google.code.gson:gson:2.8.8")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+
+    implementation("androidx.work:work-runtime:2.8.1")
+    implementation("com.loopj.android:android-async-http:1.4.10")
 }

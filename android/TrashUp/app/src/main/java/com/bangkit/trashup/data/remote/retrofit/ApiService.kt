@@ -1,43 +1,37 @@
 package com.bangkit.trashup.data.remote.retrofit
 
+import com.bangkit.trashup.data.remote.request.LoginRequest
+import com.bangkit.trashup.data.remote.request.RegisterRequest
+import com.bangkit.trashup.data.remote.request.ViewRequest
 import com.bangkit.trashup.data.remote.response.ArticlesResponse
-import com.example.storyappdicoding.data.remote.response.LoginResponse
-import com.example.storyappdicoding.data.remote.response.RegisterResponse
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
+import com.bangkit.trashup.data.remote.response.LoginResponse
+import com.bangkit.trashup.data.remote.response.RegisterResponse
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Multipart
 import retrofit2.http.POST
-import retrofit2.http.Part
+import retrofit2.http.Query
 
 interface ApiService {
 
-    @FormUrlEncoded
-    @POST("register")
+    @POST("auth/register")
     suspend fun register(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body request: RegisterRequest
     ): Response<RegisterResponse>
 
-    @FormUrlEncoded
-    @POST("login")
+    @POST("auth/login")
     suspend fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body request: LoginRequest
     ): Response<LoginResponse>
 
-    @Multipart
-    @POST("stories")
-    suspend fun uploadStories(
-        @Part("description") description: RequestBody,
-        @Part file: MultipartBody.Part
-    ): Response<RegisterResponse>
+    @GET("tutorials")
+    suspend fun getArticles(
+        @Query("page") page: Int = 1,
+        @Query("size") size: Int = 20
+    ): Response<ArticlesResponse>
 
-    @GET("stories")
-    suspend fun getStories(
+    @POST("views")
+    suspend fun updateArticleView(
+        @Body viewRequest: ViewRequest
     ): Response<ArticlesResponse>
 }

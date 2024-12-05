@@ -1,7 +1,7 @@
 <resources>
     <style name="Theme.TrashUp" parent="Theme.Material3.DayNight">
 
-        <item name="colorPrimary">@color/dogderBlue</item>
+        <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
 
@@ -13,7 +13,7 @@
     </style>
 
     <style name="StyleBar" parent="Widget.Material3.Toolbar">
-        <item name="android:background">@color/dogderBlue</item>
+        <item name="android:background">@color/green</item>
     </style>
 
 </resources>
