@@ -1,3 +1,10 @@
+@file:Suppress("RedundantSuppression", "RedundantSuppression", "RedundantSuppression",
+    "RedundantSuppression", "RedundantSuppression", "RedundantSuppression", "RedundantSuppression",
+    "RedundantSuppression", "RedundantSuppression", "RedundantSuppression", "RedundantSuppression",
+    "RedundantSuppression", "RedundantSuppression", "RedundantSuppression", "RedundantSuppression",
+    "RedundantSuppression", "RedundantSuppression", "RedundantSuppression", "RedundantSuppression"
+)
+
 package com.bangkit.trashup.helper
 
 import android.content.Context
@@ -16,7 +23,7 @@ import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 
-@Suppress("DEPRECATION")
+@Suppress("DEPRECATION", "unused", "RedundantSuppression")
 class ImageClassifierHelper(
     private val context: Context,
     private val classifierListener: ClassifierListener?
@@ -26,7 +33,6 @@ class ImageClassifierHelper(
         fun onResults(detectedLabel: String, probability: Float) // Mengembalikan hasil deteksi dan probabilitas
     }
 
-    // Pemetaan class ID ke jenis sampah
     private val classLabels = mapOf(
         0 to "Besi",
         1 to "Kaca",
@@ -38,33 +44,25 @@ class ImageClassifierHelper(
 
     fun classifyStaticImage(imageUri: Uri) {
         try {
-            // Muat model
             val model = Garbageclassmodel1.newInstance(context)
 
-            // Preprocessing gambar
             val tensorImage = preprocessImage(imageUri)
 
-            // Buat input buffer
             val inputBuffer = TensorBuffer.createFixedSize(intArrayOf(1, 100, 100, 3), DataType.FLOAT32)
             inputBuffer.loadBuffer(tensorImage.buffer)
 
-            // Jalankan model dan dapatkan output
             val outputs = model.process(inputBuffer)
             val outputBuffer = outputs.outputFeature0AsTensorBuffer
-            val probabilities = outputBuffer.floatArray // Ambil array probabilitas
+            val probabilities = outputBuffer.floatArray
 
-            // Cari indeks dengan probabilitas tertinggi
             val maxIndex = probabilities.indices.maxByOrNull { probabilities[it] }
             val detectedLabel = classLabels[maxIndex] ?: "Jenis sampah tidak dikenal"
             val probability = probabilities[maxIndex ?: 0]
 
-            // Kirim hasil ke listener
             classifierListener?.onResults(detectedLabel, probability)
 
-            // Log hasil deteksi
             Log.d(TAG, "Sampah terdeteksi: $detectedLabel dengan probabilitas ${probability * 100}%")
 
-            // Tutup model
             model.close()
         } catch (e: Exception) {
             val errorMessage = "Error processing image: ${e.message}"

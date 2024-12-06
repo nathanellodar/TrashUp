@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://us-central1-aiplatform.googleapis.com/" // Sesuaikan endpoint
+    private const val BASE_URL = "https://us-central1-aiplatform.googleapis.com/"
 
     fun create(context: Context): Retrofit {
         val client = OkHttpClient.Builder()

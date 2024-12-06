@@ -6,8 +6,6 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.bangkit.trashup.data.Result
 import com.bangkit.trashup.data.remote.request.ViewRequest
 import com.bangkit.trashup.data.remote.response.DatasItem

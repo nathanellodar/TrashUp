@@ -6,6 +6,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 
 class AuthInterceptor(private val context: Context) : Interceptor {
+    @Suppress("FoldInitializerAndIfToElvis")
     override fun intercept(chain: Interceptor.Chain): Response {
         val authToken = getAccessToken(context)
 

@@ -55,9 +55,9 @@ class FavoriteFragment : Fragment(), ArticlesAdapter.OnItemClickCallback {
         binding.rvFav.adapter = adapter
     }
 
-    override fun onItemClick(Articles: DatasItem) {
+    override fun onItemClick(articles: DatasItem) {
         val intent = Intent(requireContext(), DetailArticlesActivity::class.java)
-        intent.putExtra(DetailArticlesActivity.EXTRA_ARTICLES, Articles)
+        intent.putExtra(DetailArticlesActivity.EXTRA_ARTICLES, articles)
         startActivity(intent)
     }
 

@@ -10,22 +10,12 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.trashup.databinding.FragmentHomeBinding
 import com.bangkit.trashup.ui.ArticlesAdapter
 import com.bangkit.trashup.ui.ViewModelFactory
 import com.bangkit.trashup.data.Result
-import com.bangkit.trashup.data.remote.request.ViewRequest
 import com.bangkit.trashup.data.remote.response.DatasItem
-import com.bangkit.trashup.data.remote.retrofit.ApiService
-import com.bangkit.trashup.data.remote.retrofit.RetrofitClient
 import com.bangkit.trashup.databinding.FragmentArticlesBinding
-import com.bangkit.trashup.ui.LoadingStateAdapter
 import com.bangkit.trashup.ui.detail.DetailArticlesActivity
-import com.bangkit.trashup.ui.home.HomeViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class ArticlesFragment : Fragment(), ArticlesAdapter.OnItemClickCallback {

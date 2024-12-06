@@ -2,11 +2,6 @@
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
-import com.bangkit.trashup.data.ArticlesPagingSource
 import com.bangkit.trashup.data.Result
 import com.bangkit.trashup.data.local.entity.ArticlesFavEntity
 import com.bangkit.trashup.data.local.room.ArticlesDao
@@ -17,7 +12,6 @@ import com.bangkit.trashup.data.remote.retrofit.ApiService
 import com.bangkit.trashup.data.remote.request.LoginRequest
 import com.bangkit.trashup.data.remote.request.RegisterRequest
 import com.bangkit.trashup.data.remote.request.ViewRequest
-import com.bangkit.trashup.data.remote.response.ArticlesResponse
 import com.bangkit.trashup.data.remote.response.RegisterResponse
 import com.bangkit.trashup.utils.AppExecutors
 import com.google.gson.Gson

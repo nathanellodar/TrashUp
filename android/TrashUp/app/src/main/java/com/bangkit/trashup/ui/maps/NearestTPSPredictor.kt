@@ -8,6 +8,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
 
+@Suppress("LocalVariableName")
 class NearestTPSPredictor(private val context: Context) {
     private val tpsCoordinates = listOf(
         LatLng(-7.74875, 110.407583),

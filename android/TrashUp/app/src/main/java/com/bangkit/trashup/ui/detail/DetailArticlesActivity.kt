@@ -1,7 +1,5 @@
 package com.bangkit.trashup.ui.detail
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -14,8 +12,6 @@ import com.bangkit.trashup.data.remote.response.DatasItem
 import com.bangkit.trashup.databinding.ActivityDetailArticlesBinding
 import com.bangkit.trashup.ui.ViewModelFactory
 import com.bangkit.trashup.ui.favorite.FavoriteViewModel
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class DetailArticlesActivity : AppCompatActivity() {
 
