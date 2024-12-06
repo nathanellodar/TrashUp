@@ -1,6 +1,5 @@
 package com.bangkit.trashup.ui.maps
 
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
+@Suppress("RedundantOverride")
 class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
@@ -120,6 +120,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
             requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
+    @Suppress("EmptyMethod")
     override fun onDestroyView() {
         super.onDestroyView()
     }

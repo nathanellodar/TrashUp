@@ -12,7 +12,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.trashup.MainActivity
-import com.bangkit.trashup.R
 import com.bangkit.trashup.data.Result
 import com.bangkit.trashup.databinding.ActivityLoginBinding
 import com.bangkit.trashup.ui.ViewModelFactory
@@ -32,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
         setupView()
         setupLogin()
-        setupSignUpLink()  // Call method to setup sign-up link
+        setupSignUpLink()
         playAnimation()
     }
 

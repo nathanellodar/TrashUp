@@ -19,6 +19,7 @@ android {
     defaultConfig {
         applicationId = "com.bangkit.trashup"
         minSdk = 24
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -59,13 +60,6 @@ android {
         buildConfig = true
         mlModelBinding = true
     }
-    allprojects {
-        repositories {
-            google()
-            mavenCentral()
-            maven { url = uri("https://jitpack.io") }
-        }
-    }
 }
 
 dependencies {
@@ -98,20 +92,19 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     ksp(libs.room.compiler)
 
-    implementation("com.google.android.gms:play-services-location:21.2.0")
+    implementation(libs.play.services.location)
 
-    implementation("androidx.paging:paging-runtime-ktx:3.1.0")
+    implementation(libs.androidx.paging.runtime.ktx)
 
-    implementation ("org.tensorflow:tensorflow-lite:2.12.0")
-    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
-    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
-    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
-    implementation("com.github.yalantis:ucrop:2.2.8")
+    implementation (libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.task.vision)
+    implementation(libs.tensorflow.lite.support.v044)
+    implementation(libs.tensorflow.lite.metadata.v044)
 
-    implementation ("com.google.auth:google-auth-library-oauth2-http:1.18.0")
-    implementation("com.google.code.gson:gson:2.8.8")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+    implementation (libs.google.auth.library.oauth2.http)
+    implementation(libs.gson)
+    implementation(libs.kotlinx.coroutines.android)
 
-    implementation("androidx.work:work-runtime:2.8.1")
-    implementation("com.loopj.android:android-async-http:1.4.10")
+    implementation(libs.androidx.work.runtime)
+    implementation(libs.android.async.http)
 }

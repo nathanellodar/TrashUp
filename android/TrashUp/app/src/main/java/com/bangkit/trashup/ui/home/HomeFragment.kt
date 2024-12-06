@@ -20,15 +20,8 @@ import com.bangkit.trashup.databinding.FragmentHomeBinding
 import com.bangkit.trashup.ui.ArticlesAdapter
 import com.bangkit.trashup.ui.ViewModelFactory
 import com.bangkit.trashup.data.Result
-import com.bangkit.trashup.data.remote.request.ViewRequest
 import com.bangkit.trashup.data.remote.response.DatasItem
-import com.bangkit.trashup.data.remote.retrofit.ApiService
-import com.bangkit.trashup.data.remote.retrofit.RetrofitClient
 import com.bangkit.trashup.ui.detail.DetailArticlesActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment(), ArticlesAdapter.OnItemClickCallback {
 
@@ -52,22 +45,18 @@ class HomeFragment : Fragment(), ArticlesAdapter.OnItemClickCallback {
             requireActivity().finish()
         }
 
-        // Inisialisasi ViewModel
         homeViewModel = ViewModelProvider(
             this,
             ViewModelFactory.getInstance(requireContext())
         )[HomeViewModel::class.java]
 
-        // Inisialisasi Adapter
         storyAdapter = ArticlesAdapter(this)
 
-        // Konfigurasi RecyclerView
         binding.rvPopularTutor.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = storyAdapter
         }
 
-        // Observasi data dari ViewModel
         homeViewModel.result.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Loading -> {
@@ -110,57 +99,28 @@ class HomeFragment : Fragment(), ArticlesAdapter.OnItemClickCallback {
         }
 
         homeViewModel.getStories()
-
-//        // Tombol untuk Analyze
-//        binding.fabAnalyze.setOnClickListener {
-//            val intent = Intent(requireContext(), UploadFragment::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.fabToMaps.setOnClickListener {
-//            val intent = Intent(requireContext(), MapsFragment::class.java)
-//            startActivity(intent)
-//        }
-
-        // Konfigurasi WebView untuk menampilkan peta
         configureMapWebView()
     }
-
-//    private fun getData() {
-//        val adapter = ArticlesAdapter(this)
-//        binding.rvPopularTutor.adapter = adapter.withLoadStateFooter(
-//            footer = LoadingStateAdapter{
-//                adapter.retry()
-//            }
-//        )
-//        homeViewModel.stories.observe(viewLifecycleOwner) {
-//            adapter.submitData(lifecycle, it)
-//        }
-//    }
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun configureMapWebView() {
         val webView: WebView = binding.webViewMaps
         val webSettings: WebSettings = webView.settings
 
-        // Aktifkan JavaScript dan penyimpanan DOM
         webSettings.javaScriptEnabled = true
         webSettings.domStorageEnabled = true
 
-        // Pastikan link tetap terbuka di WebView
         webView.webViewClient = WebViewClient()
 
-        // Atur WebChromeClient untuk menangani permintaan izin geolokasi
         webView.webChromeClient = object : WebChromeClient() {
             override fun onGeolocationPermissionsShowPrompt(
                 origin: String,
                 callback: GeolocationPermissions.Callback
             ) {
-                callback.invoke(origin, true, false)  // Setiap permintaan izin untuk geolokasi akan langsung diizinkan
+                callback.invoke(origin, true, false)
             }
         }
 
-        // Embed HTML untuk peta
         val mapHtml = """
         <html>
         <body>
@@ -176,38 +136,8 @@ class HomeFragment : Fragment(), ArticlesAdapter.OnItemClickCallback {
         </html>
     """.trimIndent()
 
-        // Load HTML ke WebView
         webView.loadData(mapHtml, "text/html", "utf-8")
     }
-
-
-//    private fun updateArticleView(id: Int, wasteGroup: String) {
-//        val viewRequest = ViewRequest(id = id, wasteGroup = wasteGroup)
-//
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                val retrofit = RetrofitClient.create(requireContext())
-//                val apiService = retrofit.create(ApiService::class.java)
-//                val response = apiService.updateArticleView(viewRequest)
-//
-//                withContext(Dispatchers.Main) {
-//                    if (response.isSuccessful) {
-//                        Toast.makeText(requireContext(), "View updated successfully!", Toast.LENGTH_SHORT).show()
-//                    } else {
-//                        Toast.makeText(
-//                            requireContext(),
-//                            "Failed to update view: ${response.code()} ${response.message()}",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                withContext(Dispatchers.Main) {
-//                    Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        }
-//    }
 
     override fun onItemClick(story: DatasItem) {
         story.id?.let {

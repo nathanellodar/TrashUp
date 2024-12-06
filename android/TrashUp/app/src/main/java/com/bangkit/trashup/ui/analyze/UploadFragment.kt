@@ -1,7 +1,6 @@
 package com.bangkit.trashup.ui.analyze
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -25,24 +24,18 @@ import com.bangkit.trashup.data.remote.retrofit.RetrofitClient
 import com.bangkit.trashup.data.remote.retrofit.VertexAIService
 import com.bangkit.trashup.databinding.FragmentUploadBinding
 import com.bangkit.trashup.helper.ImageClassifierHelper
-import com.bangkit.trashup.utils.AppExecutors
 import com.bangkit.trashup.utils.getImageUri
 import com.bumptech.glide.Glide
-import com.yalantis.ucrop.UCrop
-import com.yalantis.ucrop.model.AspectRatio
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.File
 
 class UploadFragment : Fragment(R.layout.fragment_upload) {
 
     private lateinit var binding: FragmentUploadBinding
-    private var currentImageUri: Uri? = null
     private lateinit var imageClassifierHelper: ImageClassifierHelper
     private val imageUriViewModel: ImageUriViewModel by viewModels()
-    private val appExecutors = AppExecutors()
 
     private val launcherGallery = registerForActivityResult(
         ActivityResultContracts.PickVisualMedia()
