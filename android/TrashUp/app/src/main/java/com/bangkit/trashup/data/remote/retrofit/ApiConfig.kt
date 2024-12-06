@@ -2,6 +2,7 @@ package com.bangkit.trashup.data.remote.retrofit
 
 import android.content.Context
 import android.util.Log
+import com.bangkit.trashup.BuildConfig
 import com.bangkit.trashup.data.pref.UserPreference
 import com.bangkit.trashup.data.pref.dataStore
 import kotlinx.coroutines.flow.firstOrNull
@@ -37,7 +38,7 @@ class ApiConfig {
 
             val apiKeyInterceptor = Interceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .addHeader("api-key", "CAPSTONE-TRASHUP-API-KEY-12345678")
+                    .addHeader("api-key", BuildConfig.API_KEY)
                     .build()
                 Log.d("API Key Header", request.headers["api-key"].toString())
                 chain.proceed(request)
@@ -50,7 +51,7 @@ class ApiConfig {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://backend-fix-dot-capstone-441912.de.r.appspot.com/")
+                .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
