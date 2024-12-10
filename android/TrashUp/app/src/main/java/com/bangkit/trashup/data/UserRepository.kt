@@ -98,8 +98,8 @@ class UserRepository private constructor(
 
             val response = apiService.getArticles()
             if (response.isSuccessful) {
-                val listStory = response.body()?.payload?.datas.orEmpty().filterNotNull()
-                emit(Result.Success(listStory))
+                val listArticles = response.body()?.payload?.datas.orEmpty().filterNotNull()
+                emit(Result.Success(listArticles))
             } else {
                 val errorBody = response.errorBody()?.string()
                 val error = Gson().fromJson(errorBody, RegisterResponse::class.java)

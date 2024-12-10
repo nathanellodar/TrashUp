@@ -30,7 +30,7 @@ class ImageClassifierHelper(
 ) {
     interface ClassifierListener {
         fun onError(error: String)
-        fun onResults(detectedLabel: String, probability: Float) // Mengembalikan hasil deteksi dan probabilitas
+        fun onResults(detectedLabel: String, probability: Float)
     }
 
     private val classLabels = mapOf(
@@ -59,9 +59,13 @@ class ImageClassifierHelper(
             val detectedLabel = classLabels[maxIndex] ?: "Jenis sampah tidak dikenal"
             val probability = probabilities[maxIndex ?: 0]
 
-            classifierListener?.onResults(detectedLabel, probability)
-
-            Log.d(TAG, "Sampah terdeteksi: $detectedLabel dengan probabilitas ${probability * 100}%")
+            if (probability >= 0.75f) {
+                classifierListener?.onResults(detectedLabel, probability)
+                Log.d(TAG, "Sampah terdeteksi: $detectedLabel dengan probabilitas ${probability * 100}%")
+            } else {
+                classifierListener?.onError("Pilih gambar sampah yang lebih jelas dan jernih.")
+                Log.d(TAG, "Probabilitas terlalu rendah (${probability * 100}%).")
+            }
 
             model.close()
         } catch (e: Exception) {
@@ -71,11 +75,12 @@ class ImageClassifierHelper(
         }
     }
 
+
     private fun preprocessImage(imageUri: Uri): TensorImage {
         val imageProcessor = ImageProcessor.Builder()
-            .add(ResizeOp(100, 100, ResizeOp.ResizeMethod.BILINEAR)) // Resize ke 100x100
-            .add(CastOp(DataType.FLOAT32)) // Konversi ke FLOAT32
-            .add(NormalizeOp(0.0f, 255.0f)) // Normalisasi piksel ke [0, 1]
+            .add(ResizeOp(100, 100, ResizeOp.ResizeMethod.BILINEAR))
+            .add(CastOp(DataType.FLOAT32))
+            .add(NormalizeOp(0.0f, 255.0f))
             .build()
 
         val bitmap = loadBitmapFromUri(imageUri)

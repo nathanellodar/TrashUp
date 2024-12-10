@@ -1,3 +1,5 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused")
+
 package com.bangkit.trashup.data.remote.response
 
 import com.bangkit.trashup.data.remote.request.Content
@@ -29,6 +31,7 @@ data class SafetyRating (
     val severityScore: Double
 )
 
+@Suppress("unused", "unused")
 enum class Category {
     HarmCategoryDangerousContent,
     HarmCategoryHarassment,

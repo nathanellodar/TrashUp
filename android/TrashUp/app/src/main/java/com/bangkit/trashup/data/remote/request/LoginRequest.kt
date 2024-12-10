@@ -1,10 +1,10 @@
-@file:Suppress("PropertyName", "PropertyName", "PropertyName", "PropertyName", "PropertyName",
-    "PropertyName", "PropertyName", "PropertyName", "PropertyName", "PropertyName", "PropertyName"
+@file:Suppress(
+    "PropertyName"
 )
 
 package com.bangkit.trashup.data.remote.request
 
-@Suppress("PropertyName", "PropertyName", "PropertyName", "PropertyName", "PropertyName",
+@Suppress(
     "PropertyName"
 )
 class LoginRequest(

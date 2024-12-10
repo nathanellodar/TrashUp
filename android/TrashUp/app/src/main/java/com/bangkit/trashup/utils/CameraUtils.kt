@@ -1,5 +1,5 @@
-@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused"
+@file:Suppress(
+    "unused"
 )
 
 package com.bangkit.trashup.utils
