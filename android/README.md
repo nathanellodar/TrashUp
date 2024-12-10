@@ -7,4 +7,4 @@
 - Save articles in Bookmarks so that users can save articles they like and can access them without an internet connection.
 
 **Project Output**
-- [Unduh Aplikasi (APK)](https://drive.google.com/file/d/1KeaZsabVMC6qUvmKuBxkIPQrL7BF7K_j/view?usp=drive_link)
+- [Unduh Aplikasi TrashUp (APK)](https://drive.google.com/file/d/1KeaZsabVMC6qUvmKuBxkIPQrL7BF7K_j/view?usp=drive_link)
