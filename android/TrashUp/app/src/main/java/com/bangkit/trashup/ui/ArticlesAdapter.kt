@@ -9,24 +9,24 @@ import com.bangkit.trashup.data.remote.response.DatasItem
 import com.bumptech.glide.Glide
 import com.bangkit.trashup.databinding.ItemRowArticlesBinding
 
-class ArticlesAdapter(private val onItemClickCallback: OnItemClickCallback) : ListAdapter<DatasItem, ArticlesAdapter.StoryViewHolder>(DIFF_CALLBACK) {
+class ArticlesAdapter(private val onItemClickCallback: OnItemClickCallback) : ListAdapter<DatasItem, ArticlesAdapter.ArticlesViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticlesViewHolder {
         val binding = ItemRowArticlesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return StoryViewHolder(binding, onItemClickCallback)
+        return ArticlesViewHolder(binding, onItemClickCallback)
     }
 
-    override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
-        val story = getItem(position)
-        if (story != null) {
-            holder.bind(story)
+    override fun onBindViewHolder(holder: ArticlesViewHolder, position: Int) {
+        val articles = getItem(position)
+        if (articles != null) {
+            holder.bind(articles)
             holder.itemView.setOnClickListener {
-                onItemClickCallback.onItemClick(story)
+                onItemClickCallback.onItemClick(articles)
             }
         }
     }
 
-    class StoryViewHolder(private val binding: ItemRowArticlesBinding, private val listener: OnItemClickCallback) : RecyclerView.ViewHolder(binding.root) {
+    class ArticlesViewHolder(private val binding: ItemRowArticlesBinding, private val listener: OnItemClickCallback) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(tutorials: DatasItem) {
             val context = binding.root.context
@@ -44,7 +44,7 @@ class ArticlesAdapter(private val onItemClickCallback: OnItemClickCallback) : Li
     }
 
     interface OnItemClickCallback {
-        fun onItemClick(story: DatasItem)
+        fun onItemClick(articles: DatasItem)
     }
 
     companion object {

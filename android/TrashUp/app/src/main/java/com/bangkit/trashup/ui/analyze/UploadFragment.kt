@@ -49,12 +49,16 @@ class UploadFragment : Fragment(R.layout.fragment_upload) {
     private val launcherCamera =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
-                imageUriViewModel.currentImageUri?.let { uri ->
+                tempImageUri?.let { uri ->
+                    imageUriViewModel.currentImageUri = uri
                     showImage(uri)
                 }
             } else {
-                imageUriViewModel.currentImageUri = null
-                Log.d("Photo Picker", "No photo taken")
+                imageUriViewModel.currentImageUri?.let { uri ->
+                    showImage(uri)
+                } ?: run {
+                    Toast.makeText(requireContext(), "No Picture Taken", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -85,7 +89,7 @@ class UploadFragment : Fragment(R.layout.fragment_upload) {
 
                 override fun onResults(detectedLabel: String, probability: Float) {
                     showProgressFor10Seconds()
-                    fetchGeneratedContent(detectedLabel)
+                    fetchGeneratedContent(detectedLabel, probability)
                 }
             }
         )
@@ -127,9 +131,10 @@ class UploadFragment : Fragment(R.layout.fragment_upload) {
 
     private fun startCamera() {
         val uri = getImageUri(requireContext())
-        imageUriViewModel.currentImageUri = uri
+        tempImageUri = uri
         launcherCamera.launch(uri)
     }
+    private var tempImageUri: Uri? = null
 
     private fun showImage(uri: Uri) {
         Glide.with(this)
@@ -151,7 +156,13 @@ class UploadFragment : Fragment(R.layout.fragment_upload) {
         }
     }
 
-    private fun fetchGeneratedContent(detectedLabel: String) {
+    private fun fetchGeneratedContent(detectedLabel: String, probability: Float) {
+        if (probability < 0.75f) {
+            // Tampilkan pesan pada UI jika probabilitas terlalu rendah
+            showToast("Pilih gambar sampah yang lebih jelas dan jernih.")
+            return
+        }
+
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val retrofit = RetrofitClient.create(requireContext())
@@ -191,6 +202,7 @@ class UploadFragment : Fragment(R.layout.fragment_upload) {
             }
         }
     }
+
 
     private fun moveToResult(imageUri: Uri?, resultText: String) {
         val processedText = processText(resultText)
