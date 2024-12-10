@@ -5,7 +5,7 @@
 </p>
 
 ## Project Documents:
-- Project Brief : [Project Brief]([https://](https://docs.google.com/document/d/1Jf8cpMMBZwa2zTwS1wDCoerl7HvR8DJolfOUouSnWYk/edit?tab=t.0)
+- Project Brief : [Project Brief](https://docs.google.com/document/d/1Jf8cpMMBZwa2zTwS1wDCoerl7HvR8DJolfOUouSnWYk/edit?tab=t.0)
 - Final presentation :  [Final presentation](https://)
 - Go-To Market presentation : [Go-To Market](https://)
 - Video Youtube :[Youtube](https://)
