@@ -8,3 +8,6 @@
 
 **Project Output**
 - [Download TrashUp (APK)](https://drive.google.com/file/d/1KeaZsabVMC6qUvmKuBxkIPQrL7BF7K_j/view?usp=drive_link)
+
+**Endpoint**
+- https://backend-fix-dot-capstone-441912.de.r.appspot.com 
